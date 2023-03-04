@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Demo</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.nav{
+		display: flex;
+		background-color: black;
+		color: white;
+		height: 50px;
+		margin-top: 10px;
+		/* margin-left: 10px; */
+	}
+	p{
+		margin-left: 50px;
+		padding-top: 10px;
+		/* border: wheat 1px solid; */
+	}
+</style>
+<body>
+	<div class="nav">
+		<p>Cricket</p>
+		<p>Hockey</p>
+		<p>Boxing</p>
+		<p>FootBall</p>
+		<p>Badminton</p>
+		<p>Kabbadi</p>
+		<p>Tennis</p>
+		<p>Table Tennis</p>
+		<p>BasketBall</p>
+		<p>VollyBall</p>
+		<p>Snooker</p>
+	</div>
+	<h1 style="margin-left: 50px; margin-top: 10px;">UpComing Events</h1>
+	<div class="cricket_events" id="cr">
+		<h2 id="fevent"></h2>
+		<h2 id="sevent"></h2>
+	</div>
+	<div class="Live" id="Live">
+		<h1 style="margin-left: 100px; margin-top: 50px;">Live Score</h1>
+	</div>
+</body>
+<script>
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7aa44af0fbmshea61bfbff82332bp118e1ajsn3fc5c77e1fbe',
+		'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com'
+	}
+};
+
+fetch('https://flashlive-sports.p.rapidapi.com/v1/events/list?indent_days=-1&timezone=-4&sport_id=13&locale=en_INT', options)
+	.then(response => response.json())
+	.then(response => {
+		for (let l = 0; l< response["DATA"].length; l++){
+			const d = document.getElementById('cr')
+			const c = document.createElement('h1');
+			c.style.marginLeft = "50px"
+			const x = document.createTextNode(response["DATA"][l]["NAME"])
+			d.appendChild(c)
+			c.appendChild(x)
+			const status = document.createElement('p');
+			d.appendChild(status)
+			text = document.createTextNode("Staus : "+ response["DATA"][l]["EVENTS"][0]["STAGE"])
+			status.appendChild(text)
+		}
+	})	
+	.catch(err => console.error(err));
+	
+
+	const options2 = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7aa44af0fbmshea61bfbff82332bp118e1ajsn3fc5c77e1fbe',
+		'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com'
+	}
+};
+
+fetch('https://flashlive-sports.p.rapidapi.com/v1/events/live-list?sport_id=13&locale=en_INT&timezone=-4', options2)
+	.then(response => response.json())
+	.then(response => {
+		for (let x = 0; x<response["DATA"].length;x++){
+			getparentdiv = document.getElementById('Live');
+			createheading = document.createElement('h2');
+			createheading.style.marginLeft = "50px";
+			createText = document.createTextNode(response["DATA"][x]["NAME"])
+			getparentdiv.appendChild(createheading)
+			createheading.appendChild(createText)
+
+			createscore = document.createElement('h3');
+			getscore = document.createTextNode("Score : "+ response["DATA"][x]["EVENTS"][0]["AWAY_SCORE_CURRENT"]+"/"+response["DATA"][x]["EVENTS"][0]["AWAY_SCORE_PART_2_OVERS_OUTS_WICKETS"])
+			getparentdiv.appendChild(getscore)
+
+		}
+	})
+	.catch(err => console.error(err));
+</script>
+</html>

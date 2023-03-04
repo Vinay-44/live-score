@@ -1,0 +1,144 @@
+
+.material-symbols-outlined {
+	font-variation-settings:
+	'FILL' 0,
+	'wght' 400,
+	'GRAD' 0,
+	'opsz' 48
+}
+.ads{
+	height:32rem;
+	width: 150px;
+	background-image: url("https://content.livesportmedia.eu/media?name=in_160x600.gif&type=gif&s=1652971624");
+}
+
+body{
+	/* background-color: lightgray !important; */
+	/* background-image: linear-gradient(0deg, #253155 0%, #7F5A83 74%) */
+	background-color: #010A0F;
+}
+
+.bg-gray{
+	background-color: #00141E;
+}
+.title{
+	color: gold;
+	font-size: 15px;
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.shadow{
+	box-shadow: 5px 5px  10px black;
+}
+
+.color{
+	background-color: #00141E;
+}
+/* 
+.headingtext{
+	font-size: ;
+} */
+
+.navcolor{
+	background-color:#2980b9;
+}
+
+.c{
+	background-color: #00141E;
+}
+.b{
+	background-color: #001E28;
+}
+.v{
+	background-color: #0F2D37;
+}
+
+
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #C93445;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-tabs {
+	border-bottom: 0px solid;
+  }
+.border-bottom {
+	border-bottom: 0.5px solid #3b3e41 !important;
+  }
+
+.border-custom{
+	border: 0.5px solid ;
+}
+.h{
+	transition-duration: 400ms;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+.h:hover{
+	/* transition-delay: 20ms; */
+	background-color: #495057;
+	cursor: pointer;
+}
+
+.heading_size{
+	font-size: small;
+	background-color: #53AF30;
+}
+.p{
+	width: 60px;
+}
+.w-15 {
+	width: 15% !important;
+}
+
+.text_color{
+	color:#53AF30
+}
+
+.league_color{
+	color: #2980B9;
+}
+@media (min-width: 576px) and (max-width: 767.98px) and (min-height:896	 ) { 
+	h5{
+		font-size: smaller;
+	}
+	.title{
+		font-size: small;
+	}
+ }
+
+.item-1{
+	grid-area: menu;
+}
+.item-2{
+	grid-area: main;
+}
+.item-3{
+	grid-area: footer;
+}
+.item-4{
+	grid-area: home_team_score;
+}
+.item-5{
+	grid-area: away_team_score;
+}
+.grid-container{
+	display: inline-grid;
+	column-gap: 0px;
+	grid-template-areas: 
+		'menu main home_team_score'
+		'menu footer away_team_score';
+}
+.hidden{
+	display: none;
+}
